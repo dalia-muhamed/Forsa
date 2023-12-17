@@ -80,7 +80,7 @@ const SectorComponent = () => {
       >
         <Text style={styles.headerText}>Top Brands in retail</Text>
         <TouchableOpacity>
-          <Text style={{ fontWeight: 600 }}>View all</Text>
+          <Text style={{ fontWeight: '600' }}>View all</Text>
         </TouchableOpacity>
       </View>
       {/*Sectors */}

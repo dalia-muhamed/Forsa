@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     borderRadius: 11,
   },
   writingheading: { color: '#FFC709', fontSize: 18 },
-  writingTxt: { color: '#FFC709', fontWeight: 300, fontSize: 12 },
+  writingTxt: { color: '#FFC709', fontWeight: '300', fontSize: 12 },
   backgroundIMG: {
     resizeMode: 'cover',
     width: '100%',
