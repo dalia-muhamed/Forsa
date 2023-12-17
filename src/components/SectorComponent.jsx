@@ -49,10 +49,6 @@ const SectorComponent = () => {
     fetchSectors();
     AllBrands();
   }, []);
-  const getPage = page => {
-    page += 1;
-    setPage(page);
-  };
   const fetchBrand = async id => {
     try {
       const apiUrl = 'https://forsa-staging.bit68.com/api/v1/stores/mystores/';
@@ -62,11 +58,9 @@ const SectorComponent = () => {
           : await axios.get(`${apiUrl}?sector=${id}&page=${page}`);
 
       const data = responseData.data.results;
+      setPage(page + 1);
       setBrand(data);
-    } catch (error) {
-      console.log(error.response.status === 404);
-      return [];
-    }
+    } catch (error) {}
   };
   return (
     <View style={styles.container}>
@@ -101,7 +95,6 @@ const SectorComponent = () => {
             <TouchableOpacity
               style={styles.button}
               onPress={() => {
-                setPage(1);
                 setId(Number(item.value));
                 fetchBrand(Number(item.value));
               }}
@@ -121,7 +114,6 @@ const SectorComponent = () => {
           showsHorizontalScrollIndicator={false}
           legacyImplementation={false}
           onEndReached={() => {
-            getPage(page);
             fetchBrand(id);
           }}
           data={brand}
