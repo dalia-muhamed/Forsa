@@ -12,7 +12,7 @@ import HeartSvg from '../components/media/svg/heart';
 import AlertSvg from '../components/media/svg/alert';
 import DropdownSvg from '../components/media/svg/down-arrow';
 import { TouchableOpacity } from 'react-native';
-import { calcHeight, calcHeightProfile } from '../../config';
+import { calcHeight } from '../../config';
 
 const Profile = () => {
   const onShare = async () => {
@@ -62,7 +62,8 @@ const Profile = () => {
         <View
           style={{
             flexDirection: 'row',
-            gap: 94,
+            alignItems: 'center',
+            justifyContent: 'space-between',
             marginTop: 14.71,
           }}
         >
@@ -75,10 +76,10 @@ const Profile = () => {
               alignItems: 'center',
             }}
           >
-            <TouchableOpacity>
+            <TouchableOpacity style={{ flexDirection: 'row' }}>
               <Text style={styles.lang}>English</Text>
+              <DropdownSvg style={styles.arrowSvg} />
             </TouchableOpacity>
-            <DropdownSvg style={styles.arrowSvg} />
           </View>
         </View>
       </View>
@@ -90,15 +91,15 @@ const styles = StyleSheet.create({
   clipPath: {
     resizeMode: 'cover',
     width: '100%',
-    height: calcHeightProfile(130),
+    height: calcHeight(130),
   },
   navIconContainer: {
     flexDirection: 'row',
-    gap: 14.45,
-    marginLeft: 67,
+    width: '40%',
+    justifyContent: 'flex-end',
   },
   favIcon: { width: 25.82, height: 22.97 },
-  alertIcon: { width: 22.68, height: 23 },
+  alertIcon: { width: 22.68, height: 23, marginLeft: 10 },
   headingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -106,9 +107,11 @@ const styles = StyleSheet.create({
     marginTop: 70,
   },
   profileHeading: {
+    width: '50%',
     fontWeight: '400',
     fontSize: 24,
     lineHeight: 29.05,
+    textAlign: 'right',
     color: 'white',
   },
   imgProfile: { width: 98, height: 82, borderRadius: 8 },
@@ -119,7 +122,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: -5,
   },
-  buttonsContainer: { marginLeft: 18, marginTop: 40 },
+  buttonsContainer: { marginHorizontal: 18, marginTop: 40 },
   buttonTxt: { fontSize: 18, fontWeight: '400' },
   lang: { fontWeight: '500' },
   arrowSvg: {

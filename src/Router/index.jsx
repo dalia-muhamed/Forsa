@@ -7,6 +7,10 @@ import { Feather } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Retail from '../Pages/Retail';
 import Offers from '../Pages/Offers';
+import OfferSvg from '../components/media/svg/Offers';
+import UserSvg from '../components/media/svg/user';
+import RetailSvg from '../components/media/svg/retail';
+import HomeSvg from '../components/media/svg/home';
 const Tab = createBottomTabNavigator();
 
 function Router() {
@@ -36,9 +40,7 @@ function Router() {
           name="Home"
           component={Home}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <Entypo name="home" size={size} color={color} />
-            ),
+            tabBarIcon: ({ color, size }) => <HomeSvg />,
             tabBarLabel: 'Home',
           }}
         />
@@ -47,7 +49,7 @@ function Router() {
           component={Retail}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Feather name="pen-tool" size={size} color={color} />
+              <RetailSvg size={size} color={color} />
             ),
             tabBarLabel: 'Retail',
           }}
@@ -56,9 +58,7 @@ function Router() {
           name="Offers"
           component={Offers}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <FontAwesome5 name="user" size={size} color={color} />
-            ),
+            tabBarIcon: ({ color, size }) => <OfferSvg color="black" />,
             tabBarLabel: 'Offers',
           }}
         />
@@ -66,9 +66,7 @@ function Router() {
           name="Profile"
           component={Profile}
           options={{
-            tabBarIcon: ({ color, size }) => (
-              <FontAwesome5 name="user" size={size} color={color} />
-            ),
+            tabBarIcon: ({ color, size }) => <UserSvg color={color} />,
             tabBarLabel: 'Profile',
           }}
         />

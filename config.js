@@ -1,7 +1,7 @@
 import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('screen');
 
-export const calcHeightProfile = target => {
+export const calcHeight = target => {
   let parent = 812;
   const val = target / parent;
   const result = val * height;

@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
+  Image,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -15,6 +16,8 @@ const SectorComponent = () => {
   const [brand, setBrand] = useState([]);
   const [page, setPage] = useState(1);
   const [id, setId] = useState();
+  const [activeBtn, setActiveBtn] = useState(0);
+
   useEffect(() => {
     const fetchSectors = async () => {
       try {
@@ -40,7 +43,6 @@ const SectorComponent = () => {
             : await axios.get(`${apiUrl}?sector=${id}&page=${page}`);
 
         const data = responseData.data.results;
-        console.log(data);
         setBrand(data);
       } catch (error) {
         console.log(err);
@@ -59,20 +61,21 @@ const SectorComponent = () => {
 
       const data = responseData.data.results;
       setPage(page + 1);
+      console.log(data);
       setBrand(data);
     } catch (error) {}
   };
+  const handlePress = index => {
+    setActiveBtn(index);
+  };
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require('./media/images/animation.png')}
-        style={styles.backgroundIMG}
-      ></ImageBackground>
       <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-between',
-          paddingHorizontal: 15,
+          paddingHorizontal: 25,
+          marginTop: 8,
         }}
       >
         <Text style={styles.headerText}>Top Brands in retail</Text>
@@ -81,7 +84,6 @@ const SectorComponent = () => {
         </TouchableOpacity>
       </View>
       {/*Sectors */}
-
       {sectorData && (
         <FlatList
           style={styles.flat}
@@ -91,15 +93,28 @@ const SectorComponent = () => {
           showsHorizontalScrollIndicator={false}
           legacyImplementation={false}
           data={sectorData}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <TouchableOpacity
-              style={styles.button}
+              style={[
+                styles.button,
+                index === activeBtn && styles.pressedButton,
+              ]}
               onPress={() => {
+                handlePress(index, item.value);
                 setId(Number(item.value));
                 fetchBrand(Number(item.value));
               }}
             >
-              <Text>{item.label}</Text>
+              <Text
+                style={[
+                  styles.buttonText,
+                  (index === activeBtn ||
+                    (index === 0 && activeBtn === null)) &&
+                    styles.pressedButtonText,
+                ]}
+              >
+                {item.label}
+              </Text>
             </TouchableOpacity>
           )}
           keyExtractor={(item, index) => index.toString()}
@@ -117,9 +132,12 @@ const SectorComponent = () => {
             fetchBrand(id);
           }}
           data={brand}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <TouchableOpacity style={styles.button}>
-              <Text>{item.title}</Text>
+              <Image
+                style={{ height: 58, width: 74 }}
+                source={{ uri: item.thumbnail }}
+              />
             </TouchableOpacity>
           )}
           keyExtractor={(item, index) => index.toString()}
@@ -134,14 +152,8 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingTop: 70,
   },
-  backgroundIMG: {
-    height: 160,
-    width: '100%',
-    position: 'absolute',
-    resizeMode: 'cover',
-  },
+
   headerText: {
-    paddingLeft: 17,
     fontWeight: 'bold',
     fontSize: 20,
   },
@@ -153,6 +165,15 @@ const styles = StyleSheet.create({
   button: {
     marginVertical: 8,
     marginHorizontal: 14,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+  pressedButton: {
+    backgroundColor: '#3EBDAC',
+    color: 'white',
+    padding: 5,
+    borderRadius: 3,
+  },
+  pressedButtonText: { color: 'white' },
 });
 export default SectorComponent;
