@@ -10,15 +10,13 @@ import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import HeartSvg from '../components/media/svg/heart';
 import AlertSvg from '../components/media/svg/alert';
-import DropdownSvg from '../components/media/svg/down-arrow';
 import { TouchableOpacity } from 'react-native';
 import { calcHeight } from '../../config';
-import { Picker } from '@react-native-picker/picker';
 import {
   getAppLanguage,
-  setAppLanguage,
   strings,
 } from '../translations/localLanguagesController';
+import DropdownComponent from '../components/DropdownComponent';
 
 const Profile = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(getAppLanguage());
@@ -75,33 +73,13 @@ const Profile = () => {
           <TouchableOpacity>
             <Text style={styles.buttonTxt}>{strings('change_language')}</Text>
           </TouchableOpacity>
-          <Picker
-            style={{
-              height: 50,
-              width: 150,
-            }}
-            selectedValue={selectedLanguage}
-            onValueChange={(itemValue, itemIndex) => {
-              setSelectedLanguage(itemValue);
-              console.log(itemValue);
-              itemValue == 'en'
-                ? setAppLanguage('en', true)
-                : setAppLanguage('ar', true);
-            }}
-          >
-            <Picker.Item label="English" value="en" />
-            <Picker.Item label="Arabic" value="ar" />
-          </Picker>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
             }}
           >
-            {/* <TouchableOpacity style={{ flexDirection: 'row' }}>
-              <Text style={styles.lang}>English</Text>
-              <DropdownSvg style={styles.arrowSvg} />
-            </TouchableOpacity> */}
+            <DropdownComponent />
           </View>
         </View>
       </View>

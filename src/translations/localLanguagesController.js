@@ -36,6 +36,7 @@ export const setAppLanguage = (lang, restart = false) => {
   }
 
   if (restart) {
+    console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
     Updates.reloadAsync();
   }
 };
