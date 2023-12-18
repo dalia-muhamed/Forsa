@@ -21,7 +21,7 @@ import { strings } from '../translations/localLanguagesController';
 
 const Home = () => {
   return (
-    <ScrollView>
+    <ScrollView bounces={false}>
       <ImageBackground
         style={styles.clipPath}
         source={require('../components/media/images/Ellipse4xhome.png')}
