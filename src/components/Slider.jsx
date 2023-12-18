@@ -41,7 +41,7 @@ const Slider = () => {
 
   const getItemLayout = (data, index) => ({
     length: screenWidth,
-    offset: 323 * index,
+    offset: 300 * index,
     index: index,
   });
 
@@ -71,7 +71,7 @@ const Slider = () => {
             style={{
               flex: 1,
               height: 138,
-              width: 323,
+              width: calcWidth(300),
               borderRadius: 10,
               resizeMode: 'cover',
             }}
