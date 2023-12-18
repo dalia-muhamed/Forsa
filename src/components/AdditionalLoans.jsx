@@ -5,7 +5,10 @@ import { TouchableOpacity } from 'react-native';
 import BackgroundEven from '../components/media/svg/loansBackground';
 import BackgroundOdd from '../components/media/svg/backgroundOdd';
 import { calcWidth } from '../../config';
-import { strings } from '../translations/localLanguagesController';
+import {
+  getAppLanguage,
+  strings,
+} from '../translations/localLanguagesController';
 
 const AdditionalLoans = () => {
   const [loans, setLoans] = useState([]);
@@ -43,7 +46,9 @@ const AdditionalLoans = () => {
                 ) : (
                   <BackgroundEven style={styles.loanContainer}></BackgroundEven>
                 )}
-                <Text style={styles.loanLabel}>{item.name}</Text>
+                <Text style={styles.loanLabel}>
+                  {getAppLanguage() === 'ar' ? item.name_ar : item.name}
+                </Text>
               </View>
             )}
             keyExtractor={(item, index) => index.toString()}
