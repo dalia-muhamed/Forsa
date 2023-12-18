@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
 import axios from 'axios';
-import { strings } from '../translations/localLanguagesController';
+import {
+  getAppLanguage,
+  strings,
+} from '../translations/localLanguagesController';
 
 const OffersCards = () => {
   const [offers, setOffers] = useState([]);
@@ -37,7 +40,9 @@ const OffersCards = () => {
       {/* Additional content for each offer */}
       <View style={styles.fixedView}>
         <Text style={[styles.brandText, { color: 'gray' }]}>
-          {item.brand.sector.title}
+          {getAppLanguage() === 'ar'
+            ? item.brand.sector.title_ar
+            : item.brand.sector.title}
         </Text>
         <Text style={styles.brandText}>{item.brand.title}</Text>
         {/* Add more content as needed */}
