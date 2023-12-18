@@ -34,13 +34,13 @@ const Slider = () => {
 
   const handleScroll = event => {
     const scrollPosition = event.nativeEvent.contentOffset.x;
-    const index = Math.round(scrollPosition / 350);
+    const index = Math.round(scrollPosition / 323);
     setActiveIndex(index);
   };
 
   const getItemLayout = (data, index) => ({
     length: screenWidth,
-    offset: 350 * index,
+    offset: 323 * index,
     index: index,
   });
 

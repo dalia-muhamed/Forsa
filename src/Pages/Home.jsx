@@ -17,6 +17,7 @@ import { calcHeight } from '../../config';
 import AdditionalLoans from '../components/AdditionalLoans';
 import OffersCards from '../components/OffersCards';
 import Slider from '../components/Slider';
+import { strings } from '../translations/localLanguagesController';
 
 const Home = () => {
   return (
@@ -37,7 +38,7 @@ const Home = () => {
           <View style={styles.writing}>
             <WritetSvg />
             <View>
-              <Text style={styles.writingheading}>Get limit limits</Text>
+              <Text style={styles.writingheading}>{strings('limit')}</Text>
               <Text style={styles.writingTxt}>
                 Complete your infoand get up to EGP 100,000
               </Text>
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     borderRadius: 11,
   },
-  writingheading: { color: '#FFC709', fontSize: 18 },
+  writingheading: { color: '#FFC709', fontSize: 18, textAlign: 'left' },
   writingTxt: { color: '#FFC709', fontWeight: '300', fontSize: 12 },
   backgroundIMG: {
     resizeMode: 'cover',

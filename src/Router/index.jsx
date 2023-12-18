@@ -40,7 +40,7 @@ function Router() {
           name="Home"
           component={Home}
           options={{
-            tabBarIcon: ({ color, size }) => <HomeSvg />,
+            tabBarIcon: ({ color, size }) => <HomeSvg fill={color} />,
             tabBarLabel: 'Home',
           }}
         />

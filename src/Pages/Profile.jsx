@@ -6,15 +6,21 @@ import {
   ImageBackground,
   Share,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import HeartSvg from '../components/media/svg/heart';
 import AlertSvg from '../components/media/svg/alert';
 import DropdownSvg from '../components/media/svg/down-arrow';
 import { TouchableOpacity } from 'react-native';
 import { calcHeight } from '../../config';
+import { Picker } from '@react-native-picker/picker';
+import {
+  getAppLanguage,
+  setAppLanguage,
+} from '../translations/localLanguagesController';
 
 const Profile = () => {
+  const [selectedLanguage, setSelectedLanguage] = useState(getAppLanguage());
   const onShare = async () => {
     try {
       await Share.share({
@@ -59,6 +65,7 @@ const Profile = () => {
         <TouchableOpacity onPress={onShare}>
           <Text style={styles.buttonTxt}>Share the app</Text>
         </TouchableOpacity>
+
         <View
           style={{
             flexDirection: 'row',
@@ -70,16 +77,33 @@ const Profile = () => {
           <TouchableOpacity>
             <Text style={styles.buttonTxt}>Change Language</Text>
           </TouchableOpacity>
+          <Picker
+            style={{
+              height: 50,
+              width: 150,
+            }}
+            selectedValue={selectedLanguage}
+            onValueChange={(itemValue, itemIndex) => {
+              setSelectedLanguage(itemValue);
+              console.log(itemValue);
+              itemValue == 'en'
+                ? setAppLanguage('en', true)
+                : setAppLanguage('ar', true);
+            }}
+          >
+            <Picker.Item label="English" value="en" />
+            <Picker.Item label="Arabic" value="ar" />
+          </Picker>
           <View
             style={{
               flexDirection: 'row',
               alignItems: 'center',
             }}
           >
-            <TouchableOpacity style={{ flexDirection: 'row' }}>
+            {/* <TouchableOpacity style={{ flexDirection: 'row' }}>
               <Text style={styles.lang}>English</Text>
               <DropdownSvg style={styles.arrowSvg} />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
       </View>

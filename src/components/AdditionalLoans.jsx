@@ -16,7 +16,7 @@ const AdditionalLoans = () => {
         const data = responseData.data.results;
         setLoans(data);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
     fetchLoans();
@@ -35,14 +35,16 @@ const AdditionalLoans = () => {
           <FlatList
             numColumns={2}
             data={loans}
-            renderItem={({ item }) => (
-              <View style={[styles.loanSection, { marginLeft: 15 }]}>
-                <View style={styles.loanContainer}>
-                  <Text style={styles.loanLabel}>{item.name}</Text>
-                </View>
+            renderItem={({ item, index }) => (
+              <View style={[styles.loanSection, { marginHorizontal: 8 }]}>
+                {index % 2 == 0 ? (
+                  <Background style={styles.loanContainer}></Background>
+                ) : (
+                  <Background style={styles.loanContainer}></Background>
+                )}
+                <Text style={styles.loanLabel}>{item.name}</Text>
               </View>
             )}
-            ItemSeparatorComponent={() => <View style={{ width: 8 }} />}
             keyExtractor={(item, index) => index.toString()}
           />
         )}
@@ -55,9 +57,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   loanContainer: {
-    width: 156.5,
+    width: calcWidth(156.5),
     height: 56,
-    backgroundColor: 'blue',
     paddingLeft: 26,
     marginBottom: 8,
     borderRadius: 10,
@@ -66,6 +67,8 @@ const styles = StyleSheet.create({
     color: 'white',
     // textAlign: 'center',
     lineHeight: 56,
+    position: 'absolute',
+    alignSelf: 'center',
   },
   headingBox: {
     paddingHorizontal: 25,

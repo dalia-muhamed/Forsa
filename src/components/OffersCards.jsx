@@ -14,7 +14,7 @@ const OffersCards = () => {
         const data = responseData.data.results;
         setOffers(data);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     };
 
