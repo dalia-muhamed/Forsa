@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native';
 import BackgroundEven from '../components/media/svg/loansBackground';
 import BackgroundOdd from '../components/media/svg/backgroundOdd';
 import { calcWidth } from '../../config';
+import { strings } from '../translations/localLanguagesController';
 
 const AdditionalLoans = () => {
   const [loans, setLoans] = useState([]);
@@ -22,13 +23,12 @@ const AdditionalLoans = () => {
     };
     fetchLoans();
   }, []);
-  const randomGradients = [];
   return (
     <View>
       <View style={styles.headingBox}>
-        <Text style={styles.header}>Request Additional Loan</Text>
+        <Text style={styles.header}>{strings('request_loan')}</Text>
         <TouchableOpacity>
-          <Text style={styles.seeLess}>See Less</Text>
+          <Text style={styles.seeLess}>{strings('see_less')}</Text>
         </TouchableOpacity>
       </View>
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -66,7 +66,6 @@ const styles = StyleSheet.create({
   },
   loanLabel: {
     color: 'white',
-    // textAlign: 'center',
     lineHeight: 56,
     position: 'absolute',
     alignSelf: 'center',
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
   seeLess: {
     fontWeight: '400',
     fontSize: 18,
-    LineHeight: 23.94,
+    lineHeight: 23.94,
     color: '#072040',
   },
 });

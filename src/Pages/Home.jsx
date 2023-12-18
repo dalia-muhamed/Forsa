@@ -13,7 +13,7 @@ import AlertSvg from '../components/media/svg/alert';
 import WritetSvg from '../components/media/svg/writing';
 import HeartSvg from '../components/media/svg/heart';
 import { EvilIcons } from '@expo/vector-icons';
-import { calcHeight } from '../../config';
+import { calcHeight, calcWidth } from '../../config';
 import AdditionalLoans from '../components/AdditionalLoans';
 import OffersCards from '../components/OffersCards';
 import Slider from '../components/Slider';
@@ -39,9 +39,7 @@ const Home = () => {
             <WritetSvg />
             <View>
               <Text style={styles.writingheading}>{strings('limit')}</Text>
-              <Text style={styles.writingTxt}>
-                Complete your infoand get up to EGP 100,000
-              </Text>
+              <Text style={styles.writingTxt}>{strings('infoand')} </Text>
             </View>
           </View>
         </View>
@@ -79,7 +77,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#FFC709',
     flexDirection: 'row',
-    width: 325,
+    width: calcWidth(325),
     height: 52,
     justifyContent: 'center',
     alignSelf: 'center',
@@ -89,6 +87,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 'auto',
     paddingVertical: 6,
     borderRadius: 11,
+    gap: 5,
   },
   writingheading: { color: '#FFC709', fontSize: 18, textAlign: 'left' },
   writingTxt: { color: '#FFC709', fontWeight: '300', fontSize: 12 },

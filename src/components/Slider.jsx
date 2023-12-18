@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import NikeSvg from './media/svg/nike';
 import { calcHeight, calcWidth } from '../../config';
+import { strings } from '../translations/localLanguagesController';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -91,7 +92,7 @@ const Slider = () => {
         }}
       >
         <NikeSvg />
-        <Text style={{ fontWeight: 'bold' }}>Check Out Latest Offers</Text>
+        <Text style={{ fontWeight: 'bold' }}>{strings('latest_offer')}</Text>
       </View>
     </View>
   );

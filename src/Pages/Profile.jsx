@@ -17,6 +17,7 @@ import { Picker } from '@react-native-picker/picker';
 import {
   getAppLanguage,
   setAppLanguage,
+  strings,
 } from '../translations/localLanguagesController';
 
 const Profile = () => {
@@ -31,16 +32,13 @@ const Profile = () => {
     }
   };
   return (
-    <ScrollView
-      style={styles.container}
-      // bounces={false}
-    >
+    <ScrollView style={styles.container} bounces={false}>
       <ImageBackground
         style={styles.clipPath}
         source={require('../components/media/images/Ellipse4x.png')}
       >
         <View style={styles.headingContainer}>
-          <Text style={styles.profileHeading}>Profile</Text>
+          <Text style={styles.profileHeading}>{strings('profile')}</Text>
           <View style={styles.navIconContainer}>
             <HeartSvg style={styles.favIcon} />
             <AlertSvg style={styles.alertIcon} />
@@ -63,7 +61,7 @@ const Profile = () => {
       </View>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity onPress={onShare}>
-          <Text style={styles.buttonTxt}>Share the app</Text>
+          <Text style={styles.buttonTxt}>{strings('share_app')}</Text>
         </TouchableOpacity>
 
         <View
@@ -75,9 +73,9 @@ const Profile = () => {
           }}
         >
           <TouchableOpacity>
-            <Text style={styles.buttonTxt}>Change Language</Text>
+            <Text style={styles.buttonTxt}>{strings('change_language')}</Text>
           </TouchableOpacity>
-          {/* <Picker
+          <Picker
             style={{
               height: 50,
               width: 150,
@@ -93,7 +91,7 @@ const Profile = () => {
           >
             <Picker.Item label="English" value="en" />
             <Picker.Item label="Arabic" value="ar" />
-          </Picker> */}
+          </Picker>
           <View
             style={{
               flexDirection: 'row',
@@ -131,7 +129,7 @@ const styles = StyleSheet.create({
     marginTop: 70,
   },
   profileHeading: {
-    width: '50%',
+    width: '60%',
     fontWeight: '400',
     fontSize: 24,
     lineHeight: 29.05,
@@ -147,7 +145,7 @@ const styles = StyleSheet.create({
     marginTop: -5,
   },
   buttonsContainer: { marginHorizontal: 18, marginTop: 40 },
-  buttonTxt: { fontSize: 18, fontWeight: '400' },
+  buttonTxt: { fontSize: 18, fontWeight: '400', textAlign: 'left' },
   lang: { fontWeight: '500' },
   arrowSvg: {
     marginLeft: 8,

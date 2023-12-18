@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, FlatList } from 'react-native';
 import axios from 'axios';
+import { strings } from '../translations/localLanguagesController';
 
 const OffersCards = () => {
   const [offers, setOffers] = useState([]);
@@ -47,8 +48,8 @@ const OffersCards = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.boldText}>Offers Selected For You</Text>
-        <Text style={styles.seeAll}>See All</Text>
+        <Text style={styles.boldText}>{strings('offers_for_you')}</Text>
+        <Text style={styles.seeAll}>{strings('see_all')}</Text>
       </View>
       <FlatList
         data={offers}

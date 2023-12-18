@@ -26,7 +26,7 @@ export function isAr() {
   if (AppLanguage == 'ar') return true;
   else false;
 }
-export const setAppLanguage = (lang: string, restart = false) => {
+export const setAppLanguage = (lang, restart = false) => {
   AppLanguage = lang;
 
   if (lang == 'ar') {
@@ -41,7 +41,7 @@ export const setAppLanguage = (lang: string, restart = false) => {
 };
 
 // The method we'll use instead of a regular string
-export const strings = (key: string) => {
+export const strings = key => {
   const _lang = Object.assign({}, { en: en, ar: ar });
   let st = key.split('.');
   ////console.log(st)

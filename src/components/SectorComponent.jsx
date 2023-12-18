@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { strings } from '../translations/localLanguagesController';
 
 const SectorComponent = () => {
   const [sectorData, setSectorData] = useState([]);
@@ -77,12 +78,13 @@ const SectorComponent = () => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           paddingHorizontal: 25,
+          alignItems: 'center',
           marginTop: 8,
         }}
       >
-        <Text style={styles.headerText}>Top Brands in retail</Text>
+        <Text style={styles.headerText}>{strings('brand_in_retail')}</Text>
         <TouchableOpacity>
-          <Text style={{ fontWeight: '600' }}>View all</Text>
+          <Text style={{ fontWeight: '600' }}>{strings('view_all')}</Text>
         </TouchableOpacity>
       </View>
       {/*Sectors */}
