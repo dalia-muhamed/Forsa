@@ -9,7 +9,10 @@ import {
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { strings } from '../translations/localLanguagesController';
+import {
+  getAppLanguage,
+  strings,
+} from '../translations/localLanguagesController';
 
 const SectorComponent = () => {
   const [sectorData, setSectorData] = useState([]);
@@ -44,27 +47,26 @@ const SectorComponent = () => {
             : await axios.get(`${apiUrl}?sector=${id}&page=${page}`);
 
         const data = responseData.data.results;
-        // console.log('data:', data, 'page:', page);
         setBrand(data);
-      } catch (error) {
-        // console.log(err);
-      }
+      } catch (error) {}
     };
     fetchSectors();
     AllBrands();
   }, []);
-  const fetchBrand = async (id, resetPage) => {
+  const fetchBrand = async (id, resetPageAndData) => {
     try {
       const apiUrl = 'https://forsa-staging.bit68.com/api/v1/stores/mystores/';
-      const pagination = resetPage ? 1 : page;
+      const pagination = resetPageAndData ? 1 : page;
+      resetPageAndData ? setPage(1) : setPage(page + 1);
+
       const responseData =
         !id || id === -1
           ? await axios.get(`${apiUrl}?page=${pagination}`)
           : await axios.get(`${apiUrl}?sector=${id}&page=${pagination}`);
 
-      const data = [...brand, ...responseData.data.results];
-      setPage(page + 1);
-      console.log(data, pagination);
+      const data = resetPageAndData
+        ? responseData.data.results
+        : [...brand, ...responseData.data.results];
       setBrand(data);
     } catch (error) {}
   };
@@ -117,7 +119,7 @@ const SectorComponent = () => {
                     styles.pressedButtonText,
                 ]}
               >
-                {item.label}
+                {getAppLanguage() === 'ar' ? strings(item.slug) : item.label}
               </Text>
             </TouchableOpacity>
           )}
