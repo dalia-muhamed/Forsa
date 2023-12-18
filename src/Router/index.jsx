@@ -49,7 +49,7 @@ function Router() {
           component={Retail}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <RetailSvg size={size} color={color} />
+              <RetailSvg size={size} fill={color} />
             ),
             tabBarLabel: 'Retail',
           }}
@@ -58,7 +58,7 @@ function Router() {
           name="Offers"
           component={Offers}
           options={{
-            tabBarIcon: ({ color, size }) => <OfferSvg color="black" />,
+            tabBarIcon: ({ color, size }) => <OfferSvg fill={color} />,
             tabBarLabel: 'Offers',
           }}
         />
@@ -66,7 +66,7 @@ function Router() {
           name="Profile"
           component={Profile}
           options={{
-            tabBarIcon: ({ color, size }) => <UserSvg color={color} />,
+            tabBarIcon: ({ color, size }) => <UserSvg fill={color} />,
             tabBarLabel: 'Profile',
           }}
         />

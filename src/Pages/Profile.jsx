@@ -77,7 +77,7 @@ const Profile = () => {
           <TouchableOpacity>
             <Text style={styles.buttonTxt}>Change Language</Text>
           </TouchableOpacity>
-          <Picker
+          {/* <Picker
             style={{
               height: 50,
               width: 150,
@@ -93,7 +93,7 @@ const Profile = () => {
           >
             <Picker.Item label="English" value="en" />
             <Picker.Item label="Arabic" value="ar" />
-          </Picker>
+          </Picker> */}
           <View
             style={{
               flexDirection: 'row',

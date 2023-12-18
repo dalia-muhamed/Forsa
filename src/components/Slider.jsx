@@ -7,7 +7,7 @@ import {
   Dimensions,
 } from 'react-native';
 import NikeSvg from './media/svg/nike';
-import { calcHeight } from '../../config';
+import { calcHeight, calcWidth } from '../../config';
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -50,7 +50,7 @@ const Slider = () => {
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'row',
-        width: 323,
+        width: calcWidth(300),
         height: 136,
         borderRadius: 20,
         alignSelf: 'center',
@@ -70,7 +70,7 @@ const Slider = () => {
             style={{
               flex: 1,
               height: 138,
-              width: 325,
+              width: 323,
               borderRadius: 10,
               resizeMode: 'cover',
             }}

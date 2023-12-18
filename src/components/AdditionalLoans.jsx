@@ -2,7 +2,8 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { TouchableOpacity } from 'react-native';
-import Background from '../components/media/svg/loansBackground';
+import BackgroundEven from '../components/media/svg/loansBackground';
+import BackgroundOdd from '../components/media/svg/backgroundOdd';
 import { calcWidth } from '../../config';
 
 const AdditionalLoans = () => {
@@ -38,9 +39,9 @@ const AdditionalLoans = () => {
             renderItem={({ item, index }) => (
               <View style={[styles.loanSection, { marginHorizontal: 8 }]}>
                 {index % 2 == 0 ? (
-                  <Background style={styles.loanContainer}></Background>
+                  <BackgroundOdd style={styles.loanContainer}></BackgroundOdd>
                 ) : (
-                  <Background style={styles.loanContainer}></Background>
+                  <BackgroundEven style={styles.loanContainer}></BackgroundEven>
                 )}
                 <Text style={styles.loanLabel}>{item.name}</Text>
               </View>
